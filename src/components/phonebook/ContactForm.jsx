@@ -1,8 +1,12 @@
-const ContactForm = ({ name, onChange, onSubmit }) => {
+const ContactForm = ({ name, number, onChange, onSubmit }) => {
     return(
             <form onSubmit={onSubmit}>
-                <label>Name</label>
+            <label>Name
             <input type="text" name='name' value={name} onChange={onChange} required />
+            </label>
+                <label>Number
+            <input type="tel" name='number' value={number} onChange={onChange} required />
+             </label>
                 <button type='submit'>Add contact</button>
             </form>
         )

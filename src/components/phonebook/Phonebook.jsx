@@ -8,7 +8,8 @@ class Phonebook extends Component {
         contacts: [],
         name: '',
         filter: '',
-        number: ''
+        number: '',
+        showDeleted: false
     }
 
     change = (evt) => {
@@ -35,14 +36,19 @@ class Phonebook extends Component {
         }));
         
     }
+     deleteContact = (id) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  }
     filter = (value) => {
     this.setState({ filter: value });
   }
     render() {
         const { contacts, filter, showDeleted } = this.state;
-    //     const filteredContacts = showDeleted
-    //   ? contacts
-    //   : contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+        const filteredContacts = showDeleted
+      ? contacts
+      : contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
             return (
                 <div>
                     <h2>Phonebook</h2>
@@ -51,11 +57,13 @@ class Phonebook extends Component {
                         number={this.state.number}
                         onChange={this.change}
                         onSubmit={this.submit} />
+                    <h3>Contacts</h3>
                     <Filter
                         value={filter}
                         onChange={this.filter}/>
                     <ContactList
-                        contacts={contacts}
+                        contacts={filteredContacts}
+                        deleteContact={this.deleteContact}
                         />
                 </div>
             )
