@@ -1,5 +1,5 @@
 const ContactList = ({contacts, deleteContact}) => {
-    
+    return(
         <ul>
             {contacts.map(contact => (
                 <li key={contact.id}>
@@ -8,7 +8,7 @@ const ContactList = ({contacts, deleteContact}) => {
                 </li>
             ))}
             
-       </ul >
+       </ul >)
 }
 
 export default ContactList;
