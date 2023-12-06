@@ -1,14 +1,21 @@
-.titleFilter{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    font-size: 30px;
+.titleFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 25px;
 }
-.inputFilter{
-    font-size: 25px;
-    border-radius: 10px;
-    border: none;
-    background-color: #F5E2D8;
-    outline: none;
-    padding: 8px;
+.inputFilter {
+  font-size: 25px;
+  border-radius: 10px;
+  border: none;
+  background-color: #f5e2d8;
+  outline: none;
+  padding: 8px;
+  transition: all 0.3s ease-out;
+}
+.inputFilter:hover,
+.inputFilter:focus,
+.inputFilter:active {
+  border: none;
+  outline: solid 2px #b5675a;
 }
