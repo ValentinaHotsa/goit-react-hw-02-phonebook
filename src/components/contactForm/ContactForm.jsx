@@ -1,55 +1,50 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid'
-
+import css from './ContactForm.module.css'
 
 export class ContactForm extends Component { 
     state = {
         name: '',
-        number: '',
+        number: ''
     }
 
     
     onChange = (evt) => {
-        // const { name, number,value } = this.props;
-        // const { name, number, value } = evt.target;
-      
-        this.setState({ name: evt.target.value });
-        this.setState({ number: evt.target.value });
+        const { name, value } = evt.currentTarget;
+        this.setState({[name]: value });
     }
 
     
     onSubmit = (evt) => {
         evt.preventDefault();
-        const { name, number, contacts } = this.state;
-        if (contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())) {
-            alert(`${name} is already in contacts`);
-            return;
-        }
+
+        const { name, number } = this.state;
+      
         const newContact = {
             id: nanoid(),
-            name: this.state.name,
-            number: this.state.number
+            name,
+            number,
         };
-        this.setState(prevState => ({
-            contacts: [...prevState.contacts, newContact],
-            name: '',
-            number: ''
-        }));
-        
+
+        this.props.addContact(newContact);
+        this.setState({name:'', id:'', number:''})
+     
     }
+    
     render() {
+       
         return (
-            <form onSubmit={this.onSubmit}>
-                  <label>Name
-                     <input type="text" name='name' value={this.state.name} onChange={this.onChange} required />
+            <form className={css.form} onSubmit={this.onSubmit}>
+                  <label className={css.formLabel}>Name
+                     <input className={css.formInput} type="text" name='name' value={this.state.name} onChange={this.onChange} required />
                   </label>
                 
-                  <label>Number
-                      <input type="tel" name='number' value={this.state.number} onChange={this.onChange} required />
+                  <label className={css.formLabel}>Number
+                    <input className={css.formInput} type="tel" name='number' value={this.state.number} onChange={this.onChange} required />
                 </label>
                 
-                <button type='submit'>Add contact</button>
-            </form>
+                <button className={css.formButton} type='submit'>Add contact</button>
+                </form>
         )}
 }
 export default ContactForm;

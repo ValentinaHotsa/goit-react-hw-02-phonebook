@@ -1,0 +1,14 @@
+.titleFilter{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 30px;
+}
+.inputFilter{
+    font-size: 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: #F5E2D8;
+    outline: none;
+    padding: 8px;
+}

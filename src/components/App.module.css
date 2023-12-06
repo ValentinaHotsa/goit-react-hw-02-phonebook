@@ -1,0 +1,13 @@
+.titlePage{
+    font-size: 60px;
+}
+.titleList{
+    font-size: 45px;
+}
+.container{
+    border: solid 2px #DEB192;
+    border-radius: 5px;
+    padding: 40px;
+    background-color: #F0D2AE;
+    /* background-color: #eddfce; */
+}
